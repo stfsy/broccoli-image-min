@@ -37,6 +37,7 @@ function ImageMinify(inputTree, options) {
 	this._includeFileCache = makeDictionary();
 	this._destinationPathCache = makeDictionary();
 
+	// TODO: do I want to keep this way of handling options?
 	options = options || {};
 
 	for (var key in options) {
@@ -45,6 +46,7 @@ function ImageMinify(inputTree, options) {
 		}
 	}
 
+	// TODO: make these options actually come in through options
 	this.destDir = this.destDir || '/';
 	this.files = this.files || ['**/*'];
 }
@@ -68,7 +70,9 @@ ImageMinify.prototype.rebuild = function() {
 
 ImageMinify.prototype.minify = function(relativePath) {
 
-	options = {
+	// TODO: give the user the ability to override these defaults and set others
+	// basically the same way grunt-contrib-imagemin does
+	var options = {
 		interlaced: true,
 		optimizationLevel: 3,
 		progressive: true
@@ -101,6 +105,7 @@ ImageMinify.prototype.minify = function(relativePath) {
 			var origSize = fileStatus.size;
 			var diffSize = origSize - data[0].contents.length;
 
+			// TODO: find best way Broccoli wants me to output statuses like this
 			console.log(relativePath + ' saved ' + prettyBytes(diffSize) + ' - ' + (diffSize / origSize * 100).toFixed() + '%');
 
 			resolve();
