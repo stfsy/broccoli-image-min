@@ -58,7 +58,6 @@ ImageMinify.prototype.rebuild = function() {
 	walkSync(this.inputPath)
 		.forEach(function(relativePath) {
 			if (_shouldProcessFile(relativePath)) {
-				console.log(relativePath);
 				promises.push(this.minify(relativePath));
 				// this.writeFile(relativePath);
 			}
@@ -75,8 +74,9 @@ ImageMinify.prototype.minify = function(relativePath) {
 		progressive: true
 	};
 	
+	var inputPath = path.dirname(relativePath);
 	var fullInputPath = path.join(this.inputPath, relativePath);
-	var fullOutputPath = path.join(this.outputPath, this.destDir);
+	var fullOutputPath = path.join(this.outputPath, this.destDir, inputPath);
 
 	mkdirp.sync(path.dirname(fullOutputPath));
 
@@ -101,7 +101,7 @@ ImageMinify.prototype.minify = function(relativePath) {
 			var origSize = fileStatus.size;
 			var diffSize = origSize - data[0].contents.length;
 
-			console.log(relativePath + ' saved ' + prettyBytes(diffSize) + ' - ' + (diffSize / origSize * 100).toFixed + '%');
+			console.log(relativePath + ' saved ' + prettyBytes(diffSize) + ' - ' + (diffSize / origSize * 100).toFixed() + '%');
 
 			resolve();
 		});
