@@ -1,5 +1,5 @@
 {
-  "name": "broccoli-imagemin",
+  "name": "broccoli-image-min",
   "version": "0.1.0",
   "description": "Minify images",
   "main": "index.js",
@@ -7,7 +7,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Harris-Miller/broccoli-imagemin.git"
+    "url": "https://github.com/Harris-Miller/broccoli-image-min.git"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
