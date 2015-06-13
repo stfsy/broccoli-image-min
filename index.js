@@ -64,9 +64,7 @@ function ImageMinify(inputTree, options) {
 		}
 	}
 
-	// TODO: make these options actually come in through options
 	this.destDir = this.destDir || '/';
-	this.files = this.files || ['**/*'];
 }
 
 ImageMinify.prototype.constructor = ImageMinify;
