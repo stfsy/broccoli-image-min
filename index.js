@@ -6,9 +6,12 @@ var RSVP = require('rsvp');
 var readCompat = require('broccoli-read-compat');
 var Imagemin = require('imagemin');
 var prettyBytes = require('pretty-bytes');
+var assign = require('lodash-node/modern/object/assign');
+var symlinkOrCopy = require('symlink-or-copy');
 
-var writeFile = RSVP.denodeify(fs.writeFile);
 
+// stole from broccoli-funnel
+// TODO: is this needed?
 function makeDictionary() {
 	var cache = Object.create(null);
 
@@ -17,6 +20,16 @@ function makeDictionary() {
 	return cache;
 }
 
+var imageminDefaultOptions = {
+	interlaced: true,
+	optimizationLevel: 3,
+	progressive: true
+};
+
+// acceptable extensions will not be used to filter what files the user want done
+// just filter what files CAN be done
+// TODO: should the user have the ability to filter these?
+// or use broccoli-funnel ahead of this filter?
 var acceptableExtensions = [
 	'.png',
 	'.gif',
@@ -25,6 +38,11 @@ var acceptableExtensions = [
 	'.svg'
 ];
 
+
+// options
+// -- srcDir
+// -- imageminOptions
+// -- TODO
 
 function ImageMinify(inputTree, options) {
 
@@ -57,6 +75,9 @@ ImageMinify.prototype.rebuild = function() {
 
 	var promises = [];
 
+	// TODO:
+	// make this async, possibly use async.each or async.eachLimit
+	// TODO: does that adhere to the promises interface? or do I need to wrap in RSVP?
 	walkSync(this.inputPath)
 		.forEach(function(relativePath) {
 			if (_shouldProcessFile(relativePath)) {
@@ -65,32 +86,34 @@ ImageMinify.prototype.rebuild = function() {
 			}
 		}, this);
 
+	// imagemin can be pretty heavy, so only do as many as a time as processors on this machine
+	// TODO
+
 	return RSVP.all(promises);
 };
 
 ImageMinify.prototype.minify = function(relativePath) {
 
-	// TODO: give the user the ability to override these defaults and set others
-	// basically the same way grunt-contrib-imagemin does
-	var options = {
-		interlaced: true,
-		optimizationLevel: 3,
-		progressive: true
-	};
-	
-	var inputPath = path.dirname(relativePath);
-	var fullInputPath = path.join(this.inputPath, relativePath);
-	var fullOutputPath = path.join(this.outputPath, this.destDir, inputPath);
+	var options = assign(imageminDefaultOptions, this.imageminOptions || {});
 
-	mkdirp.sync(path.dirname(fullOutputPath));
+	var fullInputPath = this._getFullInputFile(relativePath);
+	var fullOutputPath = this._getFullOutputFile(relativePath);
+	var outputDir = path.dirname(fullOutputPath);
 
+	mkdirp.sync(outputDir);
+
+	// Imagemin writes the file directly
 	var imagemin = new Imagemin()
 		.src(fullInputPath)
-		.dest(fullOutputPath)
+		.dest(outputDir)
 		.use(Imagemin.jpegtran(options))
 		.use(Imagemin.gifsicle(options))
 		.use(Imagemin.optipng(options))
 		.use(Imagemin.svgo({plugins: options.svgoPlugins || []}));
+
+	if (options.use) {
+		options.use.forEach(imagemin.use.bind(imagemin));
+	}
 
 	var fileStatus = fs.statSync(fullInputPath);
 
@@ -98,7 +121,7 @@ ImageMinify.prototype.minify = function(relativePath) {
 		imagemin.run(function (err, data) {
 
 			if (err) {
-				console.warn('error in processing: ' + fullOutputPath);
+				console.warn('error in processing: ' + relativePath);
 				return;
 			}
 
@@ -113,26 +136,42 @@ ImageMinify.prototype.minify = function(relativePath) {
 	});
 };
 
-// for testing purposes
+// TODO:
+// not currently being used, here for the case of the questions below
 ImageMinify.prototype.writeFile = function(relativePath) {
-	console.log(relativePath);
 
-	var fullOutputPath = path.join(this.outputPath, this.destDir, relativePath);
+	var outputPath = this._getFullOutputFile(relativePath);
+	var outputDir = path.dirname(outputPath);
 
-	mkdirp.sync(path.dirname(fullOutputPath));
-	fs.writeFileSync(fullOutputPath);
+	mkdirp.sync(outputDir);
+
+	symlinkOrCopy.sync(this._getFullInputFile(relativePath), outputPath);
 };
 
+ImageMinify.prototype._getFullInputFile = function(relativePath) {
+	return path.join(this.inputPath, relativePath);
+};
 
+ImageMinify.prototype._getFullOutputFile = function(relativePath) {
+	return path.join(this.outputPath, this.destDir, relativePath);
+};
+
+// TODO:
+// should this filter have an include/exclude glob options?
+// should files that are excluded just be passed through?
+// or should the user use broccoli-filter prior to do that kind of filtering
+// (Single Responsibility Principle)
 function _shouldProcessFile(relativePath) {
 	return _matchingFileExtension(relativePath);
 }
 
+// TODO:
+// we should of course only process on correct file types
+// but should we just ignore and pass through files that are not?
 function _matchingFileExtension(relativePath) {
-	// currently this just checks if the relativePath has an extension
-	// eventially I'll have it match to an option input
-	var ext = path.extname(relativePath);
-
+	// check if file has an aceptable extension to process
+	// toLower() so it's not case sensitive
+	var ext = path.extname(relativePath).toLower();
 	return acceptableExtensions.indexOf(ext) > -1;
 }
 
