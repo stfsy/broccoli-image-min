@@ -88,4 +88,24 @@ describe('Minifier', () => {
             })
         }).then(done, done)
     })
+
+    describe('', () => {
+
+        beforeEach(() => {
+            minifySvg = new Minifier({
+                include: '**.{svg,SVG}',
+                destination: 'costum'
+            })
+        })
+
+        it('should write to test/results/costum/', (done) => {
+            minifySvg.minify('test/fixtures', 'test/results').then(() => {
+                svgs.forEach((svg) => {
+                    const inputSize = fs.statSync(resolve('test', 'fixtures', svg))['size']
+                    const outputSize = fs.statSync(resolve('test', 'results', 'costum', svg))['size']
+                    expect(outputSize / inputSize).to.be.below(0.6)
+                })
+            }).then(done, done)
+        })
+    })
 })
