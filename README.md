@@ -2,17 +2,29 @@
 
 Broccoli plugin for minifying .jpg, .png, .svg and .gif with [imagemin](https://github.com/imagemin/imagemin).
 
-## Example
+## Examples
 
 ```js
 const BroccoliImageMin = require('broccoli-image-min')
 
 const minified = new BroccoliImageMin('app', {
-    include: ['images/**/*.{jpg,png}']
+    include: ['images/**/*.{jpg,png}'],
 })
 
 module.exports = minified
 ```
+
+```js
+const BroccoliImageMin = require('broccoli-image-min')
+
+const minified = new BroccoliImageMin('app/images', {
+    include: ['**/*.{jpg,png}'],
+    destination: 'images'
+})
+
+module.exports = minified
+```
+
 
 ## Documentation
 
@@ -23,7 +35,9 @@ module.exports = minified
 * `options`:
 
     * `include`: An array of glob patterns 
-        
+    * `destination`: A string representing the subdirectory all images will be copied into
+
+
 The returned output node contains minified images matching the `options.include` pattern with their directory structure preserved.
 
 ### Globbing patterns
