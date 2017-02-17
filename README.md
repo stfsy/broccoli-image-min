@@ -1,19 +1,57 @@
-# broccoli-imagemin v0.1.0 >TODO: travis ci
+# Broccoli Imagemin Plugin
 
-Broccoli Imagemin is a plugin that minifies image files using [imagemin](https://github.com/imagemin/imagemin)
+Broccoli plugin for minifying .jpg, .png, .svg and .gif with [imagemin](https://github.com/imagemin/imagemin).
 
-inspired by [grunt-contrib-imagemin](https://github.com/gruntjs/grunt-contrib-imagemin)
+## Examples
+
+```js
+const BroccoliImageMin = require('broccoli-image-min')
+
+const minified = new BroccoliImageMin('app', {
+    include: ['images/**/*.{jpg,png}'],
+})
+
+module.exports = minified
+```
+
+```js
+const BroccoliImageMin = require('broccoli-image-min')
+
+const minified = new BroccoliImageMin('app/images', {
+    include: ['**/*.{jpg,png}'],
+    destination: 'images'
+})
+
+module.exports = minified
+```
+
 
 ## Documentation
 
-This is super beta right now, but I wanted to get it out there to the community
+### `new BroccoliImageMin(inputNodes, options)`
 
-### `imagemin(inputTree, options)`
+* `inputNodes`: A single input node, an array of input nodes or a string pointing to a folder.
 
-### Options
+* `options`:
 
-`srcDir` *{String}*
+    * `include`: An array of glob patterns 
+    * `destination`: A string representing the subdirectory all images will be copied into
 
-default is the root of the input tree, however it can be overwritten if you want to subdir it in the output tree
 
-TODO: the rest...
+The returned output node contains minified images matching the `options.include` pattern with their directory structure preserved.
+
+### Globbing patterns
+
+Just a quick overview *from [Globbies](https://github.com/sindresorhus/globby) documentation* 
+
+- `*` matches any number of characters, but not `/`
+- `?` matches a single character, but not `/`
+- `**` matches any number of characters, including `/`, as long as it's the only thing in a path part
+- `{}` allows for a comma-separated list of "or" expressions
+- `!` at the beginning of a pattern will negate the match
+
+[Various patterns and expected matches.](https://github.com/sindresorhus/multimatch/blob/master/test.js)
+
+## License
+
+This project is distributed under the MIT license.
