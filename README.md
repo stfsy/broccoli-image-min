@@ -1,5 +1,15 @@
 # Broccoli Imagemin Plugin
 
+[![Build Status](https://travis-ci.org/stfsy/broccoli-image-min.svg)](https://travis-ci.org/stfsy/broccoli-image-min)
+[![Dependency Status](https://img.shields.io/david/stfsy/broccoli-image-min.svg)](https://github.com/stfsy/broccoli-image-min/blob/master/package.json)
+[![DevDependency Status](https://img.shields.io/david/dev/stfsy/broccoli-image-min.svg)](https://github.com/stfsy/broccoli-image-min/blob/master/package.json)
+[![Npm downloads](https://img.shields.io/npm/dm/broccoli-image-min.svg)](https://www.npmjs.com/package/broccoli-image-min)
+[![Npm Version](https://img.shields.io/npm/v/broccoli-image-min.svg)](https://www.npmjs.com/package/broccoli-image-min)
+[![Git tag](https://img.shields.io/github/tag/stfsy/broccoli-image-min.svg)](https://github.com/stfsy/broccoli-image-min/releases)
+[![Github issues](https://img.shields.io/github/issues/stfsy/broccoli-image-min.svg)](https://github.com/stfsy/broccoli-image-min/issues)
+[![License](https://img.shields.io/npm/l/broccoli-image-min.svg)](https://github.com/stfsy/broccoli-image-min/blob/master/LICENSE)
+
+
 Broccoli plugin for minifying .jpg, .png, .svg and .gif with [imagemin](https://github.com/imagemin/imagemin).
 
 ## Examples
