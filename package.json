@@ -1,6 +1,6 @@
 {
   "name": "broccoli-image-min",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Broccoli plugin for minifying .jpg, .png, .svg and .gif with imagemin",
   "main": "lib/index.js",
   "author": "Harris Miller",
