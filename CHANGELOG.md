@@ -1,3 +1,13 @@
+<a name="1.3.0"></a>
+# [1.3.0](https://github.com/stfsy/broccoli-image-min/compare/v1.2.0...v1.3.0) (2020-03-22)
+
+
+### Features
+
+* update dependencies ([9df1f5d](https://github.com/stfsy/broccoli-image-min/commit/9df1f5d))
+
+
+
 <a name="1.2.0"></a>
 # [1.2.0](https://github.com/stfsy/broccoli-image-min/compare/v1.1.0...v1.2.0) (2018-12-22)
 
