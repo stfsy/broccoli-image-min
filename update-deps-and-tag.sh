@@ -3,7 +3,8 @@
 set -ex
 
 git checkout master
-npm outdated
+npm install
+npm outdated || true
 npm update
 npm test
 git add *package*
