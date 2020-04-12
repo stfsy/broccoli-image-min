@@ -39,6 +39,7 @@
   ],
   "dependencies": {
     "broccoli-caching-writer": "^3.0.3",
+    "broccoli-plugin-adapter": "^1.0.0",
     "fs-promise": "^2.0.3",
     "globby": "^11.0.0",
     "imagemin": "^7.0.1",
