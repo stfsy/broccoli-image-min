@@ -13,7 +13,7 @@
     "url": "https://github.com/stfsy/broccoli-image-min"
   },
   "scripts": {
-    "test": "mocha test/specs",
+    "test": "mocha test/specs --timeout 20000",
     "test-watch": "mocha test/spec --watch",
     "preversion": "npm run test",
     "version": "npm run changelog && git add -A CHANGELOG.md",
