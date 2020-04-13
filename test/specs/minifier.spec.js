@@ -7,41 +7,29 @@ const fs = require('fs-promise')
 
 describe('Minifier', () => {
 
-    let minifyJpg = null
-    let minifyGif = null
-    let minifyPng = null
-    let minifySvg = null
+    let minifier = null
     let jpgs = []
     let pngs = []
     let gifs = []
     let svgs = []
 
     before(() => {
-        jpgs.push(('test.jpg'))
-        jpgs.push(('test-uppercase.JPG'))
+        jpgs.push(('test/fixtures/test.jpg'))
+        jpgs.push(('test/fixtures/test-uppercase.JPG'))
 
-        gifs.push(('test.gif'))
-        gifs.push(('test-uppercase.GIF'))
+        gifs.push(('test/fixtures/test.gif'))
+        gifs.push(('test/fixtures/test-uppercase.GIF'))
 
-        pngs.push(('test.png'))
-        pngs.push(('nested/nested/nested.png'))
-        pngs.push(('test-uppercase.PNG'))
+        pngs.push(('test/fixtures/test.png'))
+        pngs.push(('test/fixtures/nested/nested/nested.png'))
+        pngs.push(('test/fixtures/test-uppercase.PNG'))
 
-        svgs.push(('test.svg'))
+        svgs.push(('test/fixtures/test.svg'))
     })
 
     beforeEach(() => {
-        minifyJpg = new Minifier({
-            include: '**.{jpg,JPG}',
-        })
-        minifyGif = new Minifier({
-            include: '**/*.{gif,GIF}',
-        })
-        minifyPng = new Minifier({
-            include: '**/*.{png,PNG}',
-        })
-        minifySvg = new Minifier({
-            include: '**/*.{svg,SVG}',
+        minifier = new Minifier({
+            include: '.*.(jpg|JPG)',
         })
     })
 
@@ -49,63 +37,39 @@ describe('Minifier', () => {
         fs.removeSync(resolve('test/results'))
     })
 
-    it('should minify jpeg images', (done) => {
-        minifyJpg.minify('test/fixtures', 'test/results').then(() => {
-            jpgs.forEach((jpg) => {
-                const inputSize = fs.statSync(resolve('test', 'fixtures', jpg))['size']
-                const outputSize = fs.statSync(resolve('test/results', jpg))['size']
-                expect(outputSize / inputSize).to.be.below(0.5)
-            })
-        }).then(done, done)
+    describe('.matches', () => {
+
     })
 
-    it('should minify gif images', (done) => {
-        minifyGif.minify('test/fixtures', 'test/results').then(() => {
-            gifs.forEach((gif) => {
-                const inputSize = fs.statSync(resolve('test', 'fixtures', gif))['size']
-                const outputSize = fs.statSync(resolve('test', 'results', gif))['size']
-                expect(outputSize / inputSize).to.be.below(0.75)
+    describe('.minify', () => {
+        const minifyAndCompareBufferSize = (file, expectedRatio) => {
+            const inBuffer = fs.readFileSync(file)
+            return minifier.minifyBuffer(inBuffer).then((outBuffer) => {
+                expect(outBuffer.length / inBuffer.length).to.be.below(expectedRatio)
             })
-        }).then(done, done)
-    })
-
-    it('should minify png images', (done) => {
-        minifyPng.minify('test/fixtures', 'test/results').then(() => {
-            pngs.forEach((png) => {
-                const inputSize = fs.statSync(resolve('test', 'fixtures', png))['size']
-                const outputSize = fs.statSync(resolve('test', 'results', png))['size']
-                expect(outputSize / inputSize).to.be.below(0.5)
-            })
-        }).then(done, done)
-    })
-
-    it('should minify svg images', (done) => {
-        minifySvg.minify('test/fixtures', 'test/results').then(() => {
-            svgs.forEach((svg) => {
-                const inputSize = fs.statSync(resolve('test', 'fixtures', svg))['size']
-                const outputSize = fs.statSync(resolve('test', 'results', svg))['size']
-                expect(outputSize / inputSize).to.be.below(0.6)
-            })
-        }).then(done, done)
-    })
-
-    describe('', () => {
-
-        beforeEach(() => {
-            minifySvg = new Minifier({
-                include: '**.{svg,SVG}',
-                destination: 'costum'
-            })
+        }
+        it('should minify jpeg images', () => {
+            return Promise.all(jpgs.map((jpg) => {
+                return minifyAndCompareBufferSize(jpg, 0.5)
+            }))
         })
 
-        it('should write to test/results/costum/', (done) => {
-            minifySvg.minify('test/fixtures', 'test/results').then(() => {
-                svgs.forEach((svg) => {
-                    const inputSize = fs.statSync(resolve('test', 'fixtures', svg))['size']
-                    const outputSize = fs.statSync(resolve('test', 'results', 'costum', svg))['size']
-                    expect(outputSize / inputSize).to.be.below(0.6)
-                })
-            }).then(done, done)
+        it('should minify gif images', () => {
+            return Promise.all(gifs.map((gif) => {
+                return minifyAndCompareBufferSize(gif, 0.75)
+            }))
+        })
+
+        it('should minify png images', () => {
+            return Promise.all(pngs.map((png) => {
+                return minifyAndCompareBufferSize(png, 0.5)
+            }))
+        })
+
+        it('should minify svg images', () => {
+            return Promise.all(svgs.map((svg) => {
+                return minifyAndCompareBufferSize(svg, 0.55)
+            }))
         })
     })
 })
