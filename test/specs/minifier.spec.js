@@ -29,7 +29,7 @@ describe('Minifier', () => {
 
     beforeEach(() => {
         minifier = new Minifier({
-            include: '.*.(jpg|JPG)',
+            include: '.*.(jpg|JPG|gif|GIF|png|PNG|svg)',
         })
     })
 
@@ -38,7 +38,29 @@ describe('Minifier', () => {
     })
 
     describe('.matches', () => {
+        it('matches jpg images', () => {
+            jpgs.forEach(jpg => expect(minifier.matches(jpg)).to.be.true)
+        })
 
+        it('matches jpg images in root folders', () => {
+            expect(minifier.matches('image.jpg')).to.be.true
+        })
+
+        it('matches gif images', () => {
+            gifs.forEach(gif => expect(minifier.matches(gif)).to.be.true)
+        })
+
+        it('matches png images', () => {
+            pngs.forEach(png => expect(minifier.matches(png)).to.be.true)
+        })
+
+        it('matches svg images', () => {
+            svgs.forEach(svg => expect(minifier.matches(svg)).to.be.true)
+        })
+
+        it('does not match docx files', () => {
+            expect(minifier.matches('abc/def/docx')).to.be.false
+        })
     })
 
     describe('.minify', () => {
