@@ -43,8 +43,7 @@ module.exports = minified
 
 * `options`:
 
-    * `include`: An array of glob patterns 
-    * `destination`: A string representing the subdirectory all images will be copied into
+    * `include`: An array of Regexp patterns 
 
 
 The returned output node contains minified images matching the `options.include` pattern with their directory structure preserved.
