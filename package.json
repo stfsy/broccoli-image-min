@@ -51,6 +51,7 @@
     "broccoli-test-runner": "^1.0.0",
     "chai": "^4.2.0",
     "conventional-changelog-cli": "^2.0.31",
-    "mocha": "^7.1.1"
+    "mocha": "^7.1.1",
+    "rimraf": "^3.0.2"
   }
 }
