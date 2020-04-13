@@ -3,7 +3,7 @@
 const Minifier = require('../../lib/minifier')
 const expect = require('chai').expect
 const resolve = require('path').resolve
-const fs = require('fs-promise')
+const fs = require('fs')
 
 describe('Minifier', () => {
 
@@ -31,10 +31,6 @@ describe('Minifier', () => {
         minifier = new Minifier({
             include: '.*.(jpg|JPG|gif|GIF|png|PNG|svg)',
         })
-    })
-
-    afterEach(() => {
-        fs.removeSync(resolve('test/results'))
     })
 
     describe('.matches', () => {
