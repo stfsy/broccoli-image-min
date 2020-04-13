@@ -2,9 +2,8 @@
 
 const Minifier = require('../../lib/minifier')
 const expect = require('chai').expect
-const resolve = require('path').resolve
 const fs = require('fs')
-const fixtures = require('../fixtures.js')
+const fixtures = require('../fixtures')
 
 describe('Minifier', () => {
 
