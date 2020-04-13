@@ -14,17 +14,17 @@ describe('Minifier', () => {
     let svgs = []
 
     before(() => {
-        jpgs.push(('test/fixtures/test.jpg'))
-        jpgs.push(('test/fixtures/test-uppercase.JPG'))
+        jpgs.push(('test/fixtures/app/test.jpg'))
+        jpgs.push(('test/fixtures/app/test-uppercase.JPG'))
 
-        gifs.push(('test/fixtures/test.gif'))
-        gifs.push(('test/fixtures/test-uppercase.GIF'))
+        gifs.push(('test/fixtures/app/test.gif'))
+        gifs.push(('test/fixtures/app/test-uppercase.GIF'))
 
-        pngs.push(('test/fixtures/test.png'))
-        pngs.push(('test/fixtures/nested/nested/nested.png'))
-        pngs.push(('test/fixtures/test-uppercase.PNG'))
+        pngs.push(('test/fixtures/app/test.png'))
+        pngs.push(('test/fixtures/app/nested/nested/nested.png'))
+        pngs.push(('test/fixtures/app/test-uppercase.PNG'))
 
-        svgs.push(('test/fixtures/test.svg'))
+        svgs.push(('test/fixtures/app/test.svg'))
     })
 
     beforeEach(() => {
