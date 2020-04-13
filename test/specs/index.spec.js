@@ -24,7 +24,7 @@ describe('BroccoliImageMin', () => {
         expect(builtBuffer.length / inBuffer.length).to.be.above(minRatio)
     }
 
-    it('minifies jpgs', () => fixtures.jpgs.forEach(jpg => compareSizes(jpg, .45, .5)))
+    it('minifies jpgs', () => fixtures.jpgs.forEach(jpg => compareSizes(jpg, .45, .55)))
     it('minifies pngs', () => fixtures.pngs.forEach(png => compareSizes(png, .1, .2)))
     it('minifies gifs', () => fixtures.gifs.forEach(gif => compareSizes(gif, .7, .75)))
     it('minifies svg', () => fixtures.svgs.forEach(svg => compareSizes(svg, .5, .55)))

@@ -50,7 +50,7 @@ describe('Minifier', () => {
         }
         it('should minify jpeg images', () => {
             return Promise.all(fixtures.jpgs.map((jpg) => {
-                return minifyAndCompareBufferSize(jpg, 0.5)
+                return minifyAndCompareBufferSize(jpg, 0.55)
             }))
         })
 
