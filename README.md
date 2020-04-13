@@ -18,7 +18,7 @@ Broccoli plugin for minifying .jpg, .png, .svg and .gif with [imagemin](https://
 const BroccoliImageMin = require('broccoli-image-min')
 
 const minified = new BroccoliImageMin('app', {
-    include: ['images/**/*.{jpg,png}'],
+    include: ['images/**/*.(jpg|png)']
 })
 
 module.exports = minified
@@ -28,8 +28,7 @@ module.exports = minified
 const BroccoliImageMin = require('broccoli-image-min')
 
 const minified = new BroccoliImageMin('app/images', {
-    include: ['**/*.{jpg,png}'],
-    destination: 'images'
+    include: ['**/*.(jpg|png)']
 })
 
 module.exports = minified
