@@ -1,4 +1,14 @@
-# [2.0.0](https://github.com/stfsy/broccoli-image-min/compare/v1.2.0...v2.0.0) (2020-04-13)
+# [2.1.0](https://github.com/stfsy/broccoli-image-min/compare/v2.0.0...v2.1.0) (2021-02-09)
+
+
+### Features
+
+* update outdated dependencies ([e799a67](https://github.com/stfsy/broccoli-image-min/commit/e799a676333b663761f106ff81a042d2b80ce9d0))
+* update vulnerable dependencies ([3ad89de](https://github.com/stfsy/broccoli-image-min/commit/3ad89de674e806434f57e801c29a9a68f7c53475))
+
+
+
+# [2.0.0](https://github.com/stfsy/broccoli-image-min/compare/v1.3.0...v2.0.0) (2020-04-13)
 
 
 ### Bug Fixes
@@ -9,8 +19,16 @@
 
 ### Features
 
-* update dependencies ([9df1f5d](https://github.com/stfsy/broccoli-image-min/commit/9df1f5d40f03e5bae397e824b8e0c51bacb86bdd))
 * use broccoli plugin adapter ([47f34bd](https://github.com/stfsy/broccoli-image-min/commit/47f34bd85138ebab52f3777b686621cdf190427a))
+
+
+
+# [1.3.0](https://github.com/stfsy/broccoli-image-min/compare/v1.2.0...v1.3.0) (2020-03-22)
+
+
+### Features
+
+* update dependencies ([9df1f5d](https://github.com/stfsy/broccoli-image-min/commit/9df1f5d40f03e5bae397e824b8e0c51bacb86bdd))
 
 
 
