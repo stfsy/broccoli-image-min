@@ -1,3 +1,12 @@
+# [2.2.0](https://github.com/stfsy/broccoli-image-min/compare/v2.1.0...v2.2.0) (2021-05-13)
+
+
+### Features
+
+* update outdated dependencies ([6834281](https://github.com/stfsy/broccoli-image-min/commit/68342811f6e36faf27e3f837d4fa7427ab21620a))
+
+
+
 # [2.1.0](https://github.com/stfsy/broccoli-image-min/compare/v2.0.0...v2.1.0) (2021-02-09)
 
 
