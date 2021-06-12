@@ -10,7 +10,7 @@
 [![License](https://img.shields.io/npm/l/broccoli-image-min.svg)](https://github.com/stfsy/broccoli-image-min/blob/master/LICENSE)
 
 
-Broccoli plugin for minifying .jpg, .png, .svg and .gif with [imagemin](https://github.com/imagemin/imagemin).
+Broccoli plugin for minifying .jpg, .png, .webp, .avif, .jxl and .wp2.
 
 ## Examples
 
