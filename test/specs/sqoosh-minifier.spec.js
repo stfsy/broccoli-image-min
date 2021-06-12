@@ -1,9 +1,9 @@
 'use strict'
 
-const Minifier = require('../../lib/minifier')
-const expect = require('chai').expect
+const { expect } = require('chai')
 const fs = require('fs')
-const fixtures = require('../fixtures')
+const Minifier = require('../../lib/sqoosh-minifier.js')
+const fixtures = require('../fixtures.js')
 
 describe('Minifier', () => {
 
@@ -54,21 +54,9 @@ describe('Minifier', () => {
             }))
         })
 
-        it('should minify gif images', () => {
-            return Promise.all(fixtures.gifs.map((gif) => {
-                return minifyAndCompareBufferSize(gif, 0.75)
-            }))
-        })
-
         it('should minify png images', () => {
             return Promise.all(fixtures.pngs.map((png) => {
                 return minifyAndCompareBufferSize(png, 0.5)
-            }))
-        })
-
-        it('should minify svg images', () => {
-            return Promise.all(fixtures.svgs.map((svg) => {
-                return minifyAndCompareBufferSize(svg, 0.55)
             }))
         })
     })

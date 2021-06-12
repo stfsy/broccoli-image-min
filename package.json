@@ -13,7 +13,7 @@
     "url": "https://github.com/stfsy/broccoli-image-min"
   },
   "scripts": {
-    "test": "mocha test/specs --timeout 20000",
+    "test": "mocha test/specs --timeout 60000",
     "test-watch": "mocha test/spec --watch",
     "preversion": "npm run test",
     "version": "npm run changelog && git add -A CHANGELOG.md",
@@ -38,13 +38,8 @@
     "svg"
   ],
   "dependencies": {
-    "broccoli-plugin-adapter": "^1.4.0",
-    "imagemin": "^7.0.1",
-    "imagemin-gifsicle": "^7.0.0",
-    "imagemin-jpegtran": "^7.0.0",
-    "imagemin-mozjpeg": "^8.0.0",
-    "imagemin-pngquant": "^9.0.2",
-    "imagemin-svgo": "^9.0.0"
+    "@squoosh/lib": "^0.2.3",
+    "broccoli-plugin-adapter": "^1.4.0"
   },
   "devDependencies": {
     "broccoli": "^3.5.2",
