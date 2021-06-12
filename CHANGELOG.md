@@ -1,4 +1,4 @@
-# [3.0.0](https://github.com/stfsy/broccoli-image-min/compare/v2.0.0...v3.0.0) (2021-06-12)
+# [4.0.0](https://github.com/stfsy/broccoli-image-min/compare/v2.0.0...v4.0.0) (2021-06-12)
 
 
 ### Bug Fixes
