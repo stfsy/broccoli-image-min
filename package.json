@@ -44,7 +44,7 @@
     "imagemin-jpegtran": "^7.0.0",
     "imagemin-mozjpeg": "^8.0.0",
     "imagemin-pngquant": "^8.0.0",
-    "imagemin-svgo": "^7.1.0"
+    "imagemin-svgo": "^9.0.0"
   },
   "devDependencies": {
     "broccoli-cli": "^1.0.0",
