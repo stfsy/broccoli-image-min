@@ -1,23 +1,24 @@
-# [2.2.0](https://github.com/stfsy/broccoli-image-min/compare/v2.1.0...v2.2.0) (2021-05-13)
+# [3.0.0](https://github.com/stfsy/broccoli-image-min/compare/v2.0.0...v3.0.0) (2021-06-12)
+
+
+### Bug Fixes
+
+* add missing broccoli dev dep ([69db487](https://github.com/stfsy/broccoli-image-min/commit/69db487b2bcc42f18ac2df9a30a1be4a9b8663b4))
+* upgrade broccoli-plugin-adapter from 1.2.1 to 1.4.0 ([ac8f43b](https://github.com/stfsy/broccoli-image-min/commit/ac8f43b9ce66519da879b073cb444a1512767386))
 
 
 ### Features
 
+* add sqoosh minifier adapter ([0b09941](https://github.com/stfsy/broccoli-image-min/commit/0b09941c4ad7efa543cffd3c06ac6a1f509509ac))
 * update outdated dependencies ([6834281](https://github.com/stfsy/broccoli-image-min/commit/68342811f6e36faf27e3f837d4fa7427ab21620a))
-
-
-
-# [2.1.0](https://github.com/stfsy/broccoli-image-min/compare/v2.0.0...v2.1.0) (2021-02-09)
-
-
-### Features
-
 * update outdated dependencies ([e799a67](https://github.com/stfsy/broccoli-image-min/commit/e799a676333b663761f106ff81a042d2b80ce9d0))
 * update vulnerable dependencies ([3ad89de](https://github.com/stfsy/broccoli-image-min/commit/3ad89de674e806434f57e801c29a9a68f7c53475))
+* use sqoosh instead of imagemin ([6e09d7f](https://github.com/stfsy/broccoli-image-min/commit/6e09d7f757adfd42d6616906bf8e496dbd259c3e))
+* use sqoosh minifier adapter ([afff5c4](https://github.com/stfsy/broccoli-image-min/commit/afff5c416ab520760937299f95b14faa9d341901))
 
 
 
-# [2.0.0](https://github.com/stfsy/broccoli-image-min/compare/v1.3.0...v2.0.0) (2020-04-13)
+# [2.0.0](https://github.com/stfsy/broccoli-image-min/compare/v1.2.0...v2.0.0) (2020-04-13)
 
 
 ### Bug Fixes
@@ -28,16 +29,8 @@
 
 ### Features
 
-* use broccoli plugin adapter ([47f34bd](https://github.com/stfsy/broccoli-image-min/commit/47f34bd85138ebab52f3777b686621cdf190427a))
-
-
-
-# [1.3.0](https://github.com/stfsy/broccoli-image-min/compare/v1.2.0...v1.3.0) (2020-03-22)
-
-
-### Features
-
 * update dependencies ([9df1f5d](https://github.com/stfsy/broccoli-image-min/commit/9df1f5d40f03e5bae397e824b8e0c51bacb86bdd))
+* use broccoli plugin adapter ([47f34bd](https://github.com/stfsy/broccoli-image-min/commit/47f34bd85138ebab52f3777b686621cdf190427a))
 
 
 
