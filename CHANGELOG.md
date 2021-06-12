@@ -17,6 +17,8 @@
 * use sqoosh minifier adapter ([afff5c4](https://github.com/stfsy/broccoli-image-min/commit/afff5c416ab520760937299f95b14faa9d341901))
 
 
+### Breaking Changes
+imagemin was more or less deprecated by its author: imagemin/imagemin#385. This release support for gifs and svgs as both formats are not support by https://github.com/GoogleChromeLabs/squoosh
 
 # [2.0.0](https://github.com/stfsy/broccoli-image-min/compare/v1.2.0...v2.0.0) (2020-04-13)
 
