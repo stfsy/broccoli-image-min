@@ -39,7 +39,7 @@
   ],
   "dependencies": {
     "@squoosh/lib": "^0.4.0",
-    "broccoli-plugin-adapter": "^1.4.0"
+    "broccoli-plugin-adapter": "^1.4.1"
   },
   "devDependencies": {
     "broccoli": "^3.5.2",
