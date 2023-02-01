@@ -38,7 +38,7 @@
     "svg"
   ],
   "dependencies": {
-    "@squoosh/lib": "^0.4.0",
+    "@squoosh/lib": "^0.5.3",
     "broccoli-plugin-adapter": "^1.4.1"
   },
   "devDependencies": {
